@@ -7,10 +7,16 @@ function obtenerPersonaje(id, callback){
     const url = `${API_URL}${PEOPLE_URL.replace(':id', id)}`;
     $.get(url, opts, function (character){
         console.log(`Hola yo soy ${character.name}`)
+        if(callback){
+            callback()
+        }
     })
 }
 
-obtenerPersonaje(1)
-obtenerPersonaje(2)
-obtenerPersonaje(3)
-
+obtenerPersonaje(1, function (){
+    obtenerPersonaje(2, function(){
+        obtenerPersonaje(3, function(){
+            obtenerPersonaje(4)
+        })
+    })
+})
