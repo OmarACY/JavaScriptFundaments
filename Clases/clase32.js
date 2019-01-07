@@ -13,14 +13,12 @@ function obtenerPersonaje(id){
     })
 }
 
+function onError(id){
+   console.log(`Sucedió un error al obtener el personaje ${id}`);
+}
+
 obtenerPersonaje(1)
 .then(function (character){
     console.log(`Hola yo soy ${character.name}`)
 })
-.catch(function(id){
-    console.log(`Hola yo soy ${character.name}`)
-})
-
-obtenerPersonaje(1, function (character){
-    console.log(`Hola yo soy ${character.name}`)
-})
+.catch(onError)
